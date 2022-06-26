@@ -1,7 +1,11 @@
 body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Helvetica Neue",Arial;
   font-size: 16px;
   line-height: 1;
+}
+
+#title {
+  font-family: 'Staatliches', san-serif ;
 }
 
 textarea{
