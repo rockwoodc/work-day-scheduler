@@ -1,19 +1,26 @@
 // add current date at the top of the screen
 document.getElementById("currentDay").innerHTML = moment().format('LL');
 
-//color code the tasks to visually show upcoming due dates
 var timeColor = function() {
-    // get current hour by converting my string ID to integer
-    var hour = parseInt(moment().format('HH'));
-    
-    // apply new class if task is in the present/past/future
-    if (moment().isAfter(hour)) {
-      $(descriptionEl).addClass("time-block-item-danger");
-    }
-    else if (Math.abs(moment().diff(hour, "hour")) <= 1) {
-      $(descriptionEl).addClass("description-item-warning");
-    }
-  };
+    // get current hour from calendar by converting my string ID to integer
+    var hour = parseInt(moment().format('H'));
+    // console.log(timeBlock);
+
+    $(".time-block").each(function(){
+        var dataHour = parseInt($(this).attr("id"));
+        if (dataHour < hour) {
+            $(this).addClass("past");
+        
+        }else if (dataHour === hour) {
+            $(this).removeClass("past");
+            $(this).addClass("present");
+        }else {
+            $(this).removeClass("past");
+            $(this).removeClass("present");
+            $(this).addClass("future");
+        }
+    });
+   };
 
 //save button
 $('.saveBtn').click(function(){
@@ -31,11 +38,11 @@ $("#9 .description").val(localStorage.getItem(9));
 $("#10 .description").val(localStorage.getItem(10));
 $("#11 .description").val(localStorage.getItem(11));
 $("#12 .description").val(localStorage.getItem(12));
-$("#1 .description").val(localStorage.getItem(1));
-$("#2 .description").val(localStorage.getItem(2));
-$("#3 .description").val(localStorage.getItem(3));
-$("#4 .description").val(localStorage.getItem(4));
-$("#5 .description").val(localStorage.getItem(5));
+$("#13 .description").val(localStorage.getItem(13));
+$("#14 .description").val(localStorage.getItem(14));
+$("#15 .description").val(localStorage.getItem(15));
+$("#16 .description").val(localStorage.getItem(16));
+$("#17 .description").val(localStorage.getItem(17));
 
 
 timeColor();
