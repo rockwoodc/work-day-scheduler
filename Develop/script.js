@@ -2,19 +2,22 @@
 document.getElementById("currentDay").innerHTML = moment().format('LL');
 
 var timeColor = function() {
-    // get current hour from calendar by converting my string ID to integer
+    // get current hour
     var hour = parseInt(moment().format('H'));
-    // console.log(timeBlock);
 
     $(".time-block").each(function(){
         var dataHour = parseInt($(this).attr("id"));
+        //if the current hour is after this time, make it grey
         if (dataHour < hour) {
             $(this).addClass("past");
-        
+        //if the current hour is equal to this time, make it red
         }else if (dataHour === hour) {
+            //remove the previous classes
             $(this).removeClass("past");
             $(this).addClass("present");
+        //if the current hour is before this time, make it green
         }else {
+            //remove the previous classes
             $(this).removeClass("past");
             $(this).removeClass("present");
             $(this).addClass("future");
